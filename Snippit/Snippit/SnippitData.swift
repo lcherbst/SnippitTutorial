@@ -7,8 +7,17 @@
 //
 
 struct SnippitData {
-    init(){
-        print ("new snippit created")
+    
+    let type: SnippitType
+    
+    init(sType: SnippitType){
+        type = sType
+        print ("new \(type.rawValue) snippit created")
     }
     
+}
+
+enum SnippitType: String {
+    case text = "Text"
+    case photo = "Photo"
 }

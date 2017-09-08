@@ -23,9 +23,31 @@ class ViewController: UIViewController {
     }
 
     @IBAction func createNewSnippit(_ sender: Any) {
-        let newSnippit: SnippitData = SnippitData()
-        data.append(newSnippit)
+        let alert = UIAlertController(title: "Select a Snippit type", message: nil, preferredStyle: .actionSheet )
+        
+        let textAction = UIAlertAction(title: "Text", style: .default, handler:
+        {
+            (_ alert: UIAlertAction) -> Void in
+            self.data.append(SnippitData(sType: SnippitType.text))
+        })
+        
+        let photoAction = UIAlertAction(title: "Photo", style: .default, handler:
+        {
+            (_ alert: UIAlertAction) -> Void in
+            self.data.append(SnippitData(sType: SnippitType.photo))
+        })
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        alert.addAction(textAction)
+        alert.addAction(photoAction)
+        alert.addAction(cancelAction)
+        
+        present(alert, animated: true, completion: nil)
+        
     }
+    
+
 
 }
 
