@@ -6,7 +6,7 @@
 //  Copyright © 2017 Lee Herbst. All rights reserved.
 //
 
-struct SnippitData {
+class SnippitData {
     
     let type: SnippitType
     
@@ -20,4 +20,16 @@ struct SnippitData {
 enum SnippitType: String {
     case text = "Text"
     case photo = "Photo"
+}
+
+class TextData: SnippitData {
+    
+    let textData: String
+    init(text: String){
+        textData = text
+        super.init(sType: .text)
+        print("Text snippit data: \(textData)")
+        
+    }
+    
 }

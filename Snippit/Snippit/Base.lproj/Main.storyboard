@@ -34,7 +34,7 @@
                                 </items>
                             </toolbar>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="1" green="0.80247727680000003" blue="0.23606610820000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="wxs-j6-it3" secondAttribute="trailing" id="E25-yX-WlL"/>
                             <constraint firstItem="wxs-j6-it3" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Eou-pw-fKN"/>
@@ -44,6 +44,45 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+        </scene>
+        <!--Text Snippit View Controller-->
+        <scene sceneID="Tap-c4-94B">
+            <objects>
+                <viewController storyboardIdentifier="textSnippitEntry" id="JCm-HX-0Zp" customClass="TextSnippitViewController" customModule="Snippit" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8mf-6D-Y3p"/>
+                        <viewControllerLayoutGuide type="bottom" id="lh6-i7-g4h"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Zy8-Mb-sRK">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="pV8-b0-7Th">
+                                <rect key="frame" x="0.0" y="28" width="375" height="619"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <connections>
+                                    <outlet property="delegate" destination="JCm-HX-0Zp" id="Z0N-nR-A7M"/>
+                                </connections>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.80247727676913128" blue="0.23606610816042528" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="pV8-b0-7Th" firstAttribute="top" secondItem="8mf-6D-Y3p" secondAttribute="bottom" constant="8" id="ERe-JR-Vx7"/>
+                            <constraint firstItem="pV8-b0-7Th" firstAttribute="leading" secondItem="Zy8-Mb-sRK" secondAttribute="leading" id="JYy-LF-1I2"/>
+                            <constraint firstAttribute="trailing" secondItem="pV8-b0-7Th" secondAttribute="trailing" id="Opb-Iz-DQ6"/>
+                            <constraint firstItem="lh6-i7-g4h" firstAttribute="top" secondItem="pV8-b0-7Th" secondAttribute="bottom" constant="20" id="q6h-Pw-1U7"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="textSnippitViewController" destination="pV8-b0-7Th" id="cVD-TV-0B7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zZM-5r-Cas" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="801" y="141"/>
         </scene>
     </scenes>
 </document>
