@@ -12,6 +12,7 @@ class TextSnippitEntryViewController: UIViewController, UITextViewDelegate {
     
     //MARK: Properties
     @IBOutlet weak var textView: UITextView!
+    var saveText: (_ text:String) -> Void = { (text:String) in }
     
     
     override func viewDidLoad() {
@@ -21,10 +22,11 @@ class TextSnippitEntryViewController: UIViewController, UITextViewDelegate {
         textView.becomeFirstResponder()
     }
 
-
-    //MARK: UITextViewDelegate
-    func textViewDidEndEditing(_ textView: UITextView){}
     
+    func textViewDidEndEditing(_ textView: UITextView) {
+        saveText(textView.text)
+        dismiss(animated: true, completion: nil)
+    }
     
     func createKeyboardToolbar() -> UIView {
         let keyboardToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44))
@@ -36,7 +38,7 @@ class TextSnippitEntryViewController: UIViewController, UITextViewDelegate {
     }
     
     func doneButtonPressed(){
-        textView.resignFirstResponder
+        textView.resignFirstResponder()
     }
 
 }
