@@ -69,7 +69,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
         textEntryVC.modalTransitionStyle = .coverVertical
         textEntryVC.saveText = { (text: String) in
-            let newTextSnippet = TextData(text: text)
+            let newTextSnippet = TextData(text: text, creationDate: Date())
             self.data.append(newTextSnippet)
         }
         present(textEntryVC, animated: true, completion: nil)
@@ -94,7 +94,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             return
         }
         
-        let newPhotoSnippit = PhotoData(photo: image)
+        let newPhotoSnippit = PhotoData(photo: image, creationDate: Date())
         self.data.append(newPhotoSnippit)
         dismiss(animated: true, completion: nil)
     }
@@ -111,11 +111,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let cell: UITableViewCell
         let sortedData = data.reversed() as [SnippitData]
         let snippitData = sortedData[indexPath.row]
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM d, yyy hh:mm a"
+        let dateString = formatter.string(from: snippitData.date)
         switch snippitData.type
         {
         case .text:
             cell = tableView.dequeueReusableCell(withIdentifier: "textSnippitCell", for: indexPath)
             (cell as! TextSnippitCell).label.text = (snippitData as! TextData).textData
+            (cell as! TextSnippitCell).date.text = dateString
         case .photo:
             cell = tableView.dequeueReusableCell(withIdentifier: "photoSnippitCell", for: indexPath)
             (cell as! PhotoSnippitCell).photo.image = (snippitData as! PhotoData).photoData

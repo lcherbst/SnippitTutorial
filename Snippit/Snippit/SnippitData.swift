@@ -16,10 +16,12 @@ enum SnippitType: String {
 class SnippitData {
     
     let type: SnippitType
+    let date: Date
     
-    init(sType: SnippitType){
+    init(sType: SnippitType, creationDate: Date){
         type = sType
-        print ("new \(type.rawValue) snippit created")
+        date = creationDate
+        print ("new \(type.rawValue) snippit created on \(date)")
     }
     
 }
@@ -28,9 +30,9 @@ class SnippitData {
 class TextData: SnippitData {
     let textData: String
     
-    init (text: String) {
+    init (text: String, creationDate: Date) {
         textData = text
-        super.init(sType: .text)
+        super.init(sType: .text, creationDate: creationDate)
         print ("Text snippet data: \(textData)")
         
         
@@ -41,9 +43,9 @@ class TextData: SnippitData {
 class PhotoData: SnippitData {
     let photoData: UIImage
     
-    init (photo: UIImage) {
+    init (photo: UIImage, creationDate: Date) {
         photoData = photo
-        super.init(sType: .photo)
+        super.init(sType: .photo, creationDate: creationDate)
         print ("Photo snippet data: \(photoData)")
         
         

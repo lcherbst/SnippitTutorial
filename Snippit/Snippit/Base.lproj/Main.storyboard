@@ -46,21 +46,44 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gJL-e6-2IL">
-                                                    <rect key="frame" x="8" y="8" width="359" height="28"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gJL-e6-2IL">
+                                                    <rect key="frame" x="8" y="8" width="359" height="4"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eZ6-xw-YDG">
+                                                    <rect key="frame" x="0.0" y="20" width="375" height="24"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ka2-QM-NQE">
+                                                            <rect key="frame" x="8" y="0.0" width="359" height="24"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="bottom" secondItem="Ka2-QM-NQE" secondAttribute="bottom" id="Gy9-tz-vfb"/>
+                                                        <constraint firstAttribute="height" constant="24" id="R52-cE-zqh"/>
+                                                        <constraint firstItem="Ka2-QM-NQE" firstAttribute="top" secondItem="eZ6-xw-YDG" secondAttribute="top" id="agr-mD-AtC"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Ka2-QM-NQE" secondAttribute="trailing" constant="8" id="igV-za-Z7E"/>
+                                                        <constraint firstItem="Ka2-QM-NQE" firstAttribute="leading" secondItem="eZ6-xw-YDG" secondAttribute="leading" constant="8" id="kQm-No-B1V"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottomMargin" secondItem="gJL-e6-2IL" secondAttribute="bottom" id="cg7-Ql-4gE"/>
+                                                <constraint firstAttribute="trailing" secondItem="eZ6-xw-YDG" secondAttribute="trailing" id="3Hc-mZ-8Dd"/>
+                                                <constraint firstAttribute="bottom" secondItem="eZ6-xw-YDG" secondAttribute="bottom" id="9DQ-pd-uqc"/>
+                                                <constraint firstItem="eZ6-xw-YDG" firstAttribute="leading" secondItem="NmM-vv-Lhm" secondAttribute="leading" id="9S7-ww-135"/>
+                                                <constraint firstItem="eZ6-xw-YDG" firstAttribute="top" secondItem="gJL-e6-2IL" secondAttribute="bottom" constant="8" id="VW7-qA-d7b"/>
                                                 <constraint firstItem="gJL-e6-2IL" firstAttribute="leading" secondItem="NmM-vv-Lhm" secondAttribute="leadingMargin" id="eTq-vn-kci"/>
                                                 <constraint firstItem="gJL-e6-2IL" firstAttribute="top" secondItem="NmM-vv-Lhm" secondAttribute="topMargin" id="ghM-tV-MFK"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="gJL-e6-2IL" secondAttribute="trailing" id="or0-NE-MTf"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="date" destination="Ka2-QM-NQE" id="coC-rV-KtX"/>
                                             <outlet property="label" destination="gJL-e6-2IL" id="KhP-Ck-hKp"/>
                                         </connections>
                                     </tableViewCell>

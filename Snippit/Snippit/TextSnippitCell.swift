@@ -11,4 +11,5 @@ import UIKit
 
 class TextSnippitCell: UITableViewCell {
     @IBOutlet var label: UILabel!
+    @IBOutlet weak var date: UILabel!
 }
