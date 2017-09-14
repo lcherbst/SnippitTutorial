@@ -8,26 +8,33 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDataSource {
     
     //MARK: Properties
     var data: [SnippitData] = [SnippitData]()
     let imagePicker = UIImagePickerController()
-    
+    @IBOutlet weak var tableView: UITableView!
 
+    //MARK: Overrides
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         imagePicker.delegate = self
+        tableView.estimatedRowHeight = 100
+        tableView.rowHeight = UITableViewAutomaticDimension
+
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
     
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
+    }
     
+    //MARK: Actions
     @IBAction func createNewSnippit(_ sender: Any) {
         let alert = UIAlertController(title: "Select a Snippit type", message: nil, preferredStyle: .actionSheet )
         
@@ -53,6 +60,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
     }
     
+    
+    //MARK: Class Methods
     func createNewTextSnippit () {
         guard let textEntryVC = storyboard?.instantiateViewController(withIdentifier: "textSnippitEntry") as? TextSnippitEntryViewController else {
             print("TextSnippitEntryViewController could not be instantiated from storyboard")
@@ -77,6 +86,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
     }
     
+    
+    //MARK: UIImagePickerControllerDelegate Protocols
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         guard let image = info[UIImagePickerControllerEditedImage] as? UIImage else {
             print("Image could not be found")
@@ -86,6 +97,32 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let newPhotoSnippit = PhotoData(photo: image)
         self.data.append(newPhotoSnippit)
         dismiss(animated: true, completion: nil)
+    }
+    
+    
+    //MARK: UITableViewDataSource Protocols
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return data.count
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell: UITableViewCell
+        let sortedData = data.reversed() as [SnippitData]
+        let snippitData = sortedData[indexPath.row]
+        switch snippitData.type
+        {
+        case .text:
+            cell = tableView.dequeueReusableCell(withIdentifier: "textSnippitCell", for: indexPath)
+            (cell as! TextSnippitCell).label.text = (snippitData as! TextData).textData
+        case .photo:
+            cell = tableView.dequeueReusableCell(withIdentifier: "photoSnippitCell", for: indexPath)
+            (cell as! PhotoSnippitCell).photo.image = (snippitData as! PhotoData).photoData
+        }
+        
+        
+        return cell
     }
 
 

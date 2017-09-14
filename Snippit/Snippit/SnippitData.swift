@@ -7,6 +7,12 @@
 //
 import UIKit
 
+enum SnippitType: String {
+    case text = "Text"
+    case photo = "Photo"
+}
+
+
 class SnippitData {
     
     let type: SnippitType
@@ -16,11 +22,6 @@ class SnippitData {
         print ("new \(type.rawValue) snippit created")
     }
     
-}
-
-enum SnippitType: String {
-    case text = "Text"
-    case photo = "Photo"
 }
 
 
@@ -35,6 +36,7 @@ class TextData: SnippitData {
         
     }
 }
+
 
 class PhotoData: SnippitData {
     let photoData: UIImage

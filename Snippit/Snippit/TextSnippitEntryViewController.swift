@@ -15,6 +15,7 @@ class TextSnippitEntryViewController: UIViewController, UITextViewDelegate {
     var saveText: (_ text:String) -> Void = { (text:String) in }
     
     
+    //MARK: Overrides
     override func viewDidLoad() {
       super.viewDidLoad()
         textView.delegate = self
@@ -23,11 +24,7 @@ class TextSnippitEntryViewController: UIViewController, UITextViewDelegate {
     }
 
     
-    func textViewDidEndEditing(_ textView: UITextView) {
-        saveText(textView.text)
-        dismiss(animated: true, completion: nil)
-    }
-    
+    //MARK: Class Methods
     func createKeyboardToolbar() -> UIView {
         let keyboardToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44))
         let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
@@ -40,6 +37,12 @@ class TextSnippitEntryViewController: UIViewController, UITextViewDelegate {
     func doneButtonPressed(){
         textView.resignFirstResponder()
     }
-
+    
+    
+    //MARK: UITextViewDelegate Protocols
+    func textViewDidEndEditing(_ textView: UITextView) {
+        saveText(textView.text)
+        dismiss(animated: true, completion: nil)
+    }
 }
 

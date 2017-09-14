@@ -14,10 +14,11 @@
 		847A6FD31F62E6BB005FD317 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 847A6FD11F62E6BB005FD317 /* LaunchScreen.storyboard */; };
 		847A6FDB1F62E9F9005FD317 /* SnippitData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847A6FDA1F62E9F9005FD317 /* SnippitData.swift */; };
 		847A6FDD1F6326B1005FD317 /* TextSnippitEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847A6FDC1F6326B1005FD317 /* TextSnippitEntryViewController.swift */; };
+		847AFD191F6AEAEF00F29FAC /* TextSnippitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AFD181F6AEAEF00F29FAC /* TextSnippitCell.swift */; };
+		847AFD1B1F6AEB0000F29FAC /* PhotoSnippitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AFD1A1F6AEB0000F29FAC /* PhotoSnippitCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5AA448A61F65DBA800F38738 /* TextSnippitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextSnippitViewController.swift; sourceTree = "<group>"; };
 		847A6FC51F62E6BB005FD317 /* Snippit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Snippit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		847A6FC81F62E6BB005FD317 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		847A6FCA1F62E6BB005FD317 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -27,6 +28,8 @@
 		847A6FD41F62E6BB005FD317 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		847A6FDA1F62E9F9005FD317 /* SnippitData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnippitData.swift; sourceTree = "<group>"; };
 		847A6FDC1F6326B1005FD317 /* TextSnippitEntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextSnippitEntryViewController.swift; sourceTree = "<group>"; };
+		847AFD181F6AEAEF00F29FAC /* TextSnippitCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextSnippitCell.swift; sourceTree = "<group>"; };
+		847AFD1A1F6AEB0000F29FAC /* PhotoSnippitCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoSnippitCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,7 +64,9 @@
 			children = (
 				847A6FC81F62E6BB005FD317 /* AppDelegate.swift */,
 				847A6FCA1F62E6BB005FD317 /* ViewController.swift */,
+				847AFD1A1F6AEB0000F29FAC /* PhotoSnippitCell.swift */,
 				847A6FDA1F62E9F9005FD317 /* SnippitData.swift */,
+				847AFD181F6AEAEF00F29FAC /* TextSnippitCell.swift */,
 				847A6FDC1F6326B1005FD317 /* TextSnippitEntryViewController.swift */,
 				847A6FCC1F62E6BB005FD317 /* Main.storyboard */,
 				847A6FCF1F62E6BB005FD317 /* Assets.xcassets */,
@@ -146,8 +151,9 @@
 			files = (
 				847A6FDD1F6326B1005FD317 /* TextSnippitEntryViewController.swift in Sources */,
 				847A6FCB1F62E6BB005FD317 /* ViewController.swift in Sources */,
-				5AA448A71F65DBA800F38738 /* TextSnippitViewController.swift in Sources */,
+				847AFD1B1F6AEB0000F29FAC /* PhotoSnippitCell.swift in Sources */,
 				847A6FDB1F62E9F9005FD317 /* SnippitData.swift in Sources */,
+				847AFD191F6AEAEF00F29FAC /* TextSnippitCell.swift in Sources */,
 				847A6FC91F62E6BB005FD317 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
