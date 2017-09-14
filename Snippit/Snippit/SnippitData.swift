@@ -5,6 +5,7 @@
 //  Created by Lee Herbst on 9/8/17.
 //  Copyright © 2017 Lee Herbst. All rights reserved.
 //
+import UIKit
 
 class SnippitData {
     
@@ -30,6 +31,18 @@ class TextData: SnippitData {
         textData = text
         super.init(sType: .text)
         print ("Text snippet data: \(textData)")
+        
+        
+    }
+}
+
+class PhotoData: SnippitData {
+    let photoData: UIImage
+    
+    init (photo: UIImage) {
+        photoData = photo
+        super.init(sType: .photo)
+        print ("Photo snippet data: \(photoData)")
         
         
     }

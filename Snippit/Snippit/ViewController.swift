@@ -8,13 +8,17 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    //MARK: Properties
     var data: [SnippitData] = [SnippitData]()
+    let imagePicker = UIImagePickerController()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        imagePicker.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -22,6 +26,8 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    
+    
     @IBAction func createNewSnippit(_ sender: Any) {
         let alert = UIAlertController(title: "Select a Snippit type", message: nil, preferredStyle: .actionSheet )
         
@@ -34,7 +40,7 @@ class ViewController: UIViewController {
         let photoAction = UIAlertAction(title: "Photo", style: .default, handler:
         {
             (_ alert: UIAlertAction) -> Void in
-            self.data.append(SnippitData(sType: SnippitType.photo))
+            self.createNewPhotoSnippit()
         })
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
@@ -60,6 +66,27 @@ class ViewController: UIViewController {
         present(textEntryVC, animated: true, completion: nil)
     }
     
+    func createNewPhotoSnippit() {
+        guard UIImagePickerController.isSourceTypeAvailable(.camera) else {
+            print("Camera is not available")
+            return
+        }
+        imagePicker.allowsEditing = true
+        imagePicker.sourceType = .camera
+        present(imagePicker, animated: true, completion: nil)
+        
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        guard let image = info[UIImagePickerControllerEditedImage] as? UIImage else {
+            print("Image could not be found")
+            return
+        }
+        
+        let newPhotoSnippit = PhotoData(photo: image)
+        self.data.append(newPhotoSnippit)
+        dismiss(animated: true, completion: nil)
+    }
 
 
 }
