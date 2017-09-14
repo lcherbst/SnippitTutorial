@@ -112,7 +112,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let sortedData = data.reversed() as [SnippitData]
         let snippitData = sortedData[indexPath.row]
         let formatter = DateFormatter()
-        formatter.dateFormat = "MMM d, yyy hh:mm a"
+        formatter.dateFormat = "MMM d, yyy hh:mm:ss a"
         let dateString = formatter.string(from: snippitData.date)
         switch snippitData.type
         {
@@ -123,7 +123,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         case .photo:
             cell = tableView.dequeueReusableCell(withIdentifier: "photoSnippitCell", for: indexPath)
             (cell as! PhotoSnippitCell).photo.image = (snippitData as! PhotoData).photoData
-        }
+            (cell as! PhotoSnippitCell).date.text = dateString        }
         
         
         return cell

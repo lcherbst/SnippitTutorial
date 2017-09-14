@@ -11,4 +11,5 @@ import UIKit
 
 class PhotoSnippitCell: UITableViewCell {
     @IBOutlet var photo: UIImageView!
+    @IBOutlet var date: UILabel!
 }
