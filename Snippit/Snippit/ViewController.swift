@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import CoreLocation
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDataSource {
     
     //MARK: Properties
     var data: [SnippitData] = [SnippitData]()
     let imagePicker = UIImagePickerController()
+    let locationManager = CLLocationManager()
     @IBOutlet weak var tableView: UITableView!
 
     //MARK: Overrides

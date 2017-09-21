@@ -34,7 +34,7 @@ class TextSnippitEntryViewController: UIViewController, UITextViewDelegate {
         return keyboardToolbar
     }
     
-    func doneButtonPressed(){
+    @objc func doneButtonPressed(){
         textView.resignFirstResponder()
     }
     
