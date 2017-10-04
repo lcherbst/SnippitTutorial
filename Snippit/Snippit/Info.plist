@@ -22,6 +22,8 @@
 	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>Snippit needs to access the camera to create photo snippits.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Adds location information to new snippit when it is created</string>
 	<key>UIApplicationShortcutItems</key>
 	<array>
 		<dict>

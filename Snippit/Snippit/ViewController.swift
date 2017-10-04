@@ -9,10 +9,11 @@
 import UIKit
 import CoreLocation
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDataSource {
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDataSource, CLLocationManagerDelegate {
     
     //MARK: Properties
     var data: [SnippitData] = [SnippitData]()
+    var currentCoordinate: CLLocationCoordinate2D?
     let imagePicker = UIImagePickerController()
     let locationManager = CLLocationManager()
     @IBOutlet weak var tableView: UITableView!
@@ -22,9 +23,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         imagePicker.delegate = self
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.distanceFilter = 50.0
+        
         tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableViewAutomaticDimension
 
+        askForLocationPermissions()
     }
 
     override func didReceiveMemoryWarning() {
@@ -71,7 +77,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
         textEntryVC.modalTransitionStyle = .coverVertical
         textEntryVC.saveText = { (text: String) in
-            let newTextSnippet = TextData(text: text, creationDate: Date())
+            let newTextSnippet = TextData(text: text, creationDate: Date(), creationCoordinate: self.currentCoordinate)
             self.data.append(newTextSnippet)
         }
         present(textEntryVC, animated: true, completion: nil)
@@ -88,6 +94,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
     }
     
+    func askForLocationPermissions () {
+        if CLLocationManager.authorizationStatus() == .notDetermined {
+            locationManager.requestWhenInUseAuthorization()
+        }
+    }
     
     //MARK: UIImagePickerControllerDelegate Protocols
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
@@ -96,7 +107,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             return
         }
         
-        let newPhotoSnippit = PhotoData(photo: image, creationDate: Date())
+        let newPhotoSnippit = PhotoData(photo: image, creationDate: Date(), creationCoordinate: self.currentCoordinate)
         self.data.append(newPhotoSnippit)
         dismiss(animated: true, completion: nil)
     }
@@ -129,6 +140,23 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         
         return cell
+    }
+    
+    //MARK: CLLocationManagerDelegate Protocols
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .authorizedWhenInUse {
+            locationManager.startUpdatingLocation()
+        }
+        
+    }
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("Location manager could not get location. Error: \(error.localizedDescription)")
+    }
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let currentLocation = locations.last {
+            currentCoordinate = currentLocation.coordinate
+            
+        }
     }
 
 
