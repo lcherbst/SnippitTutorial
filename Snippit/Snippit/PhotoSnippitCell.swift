@@ -12,4 +12,11 @@ import UIKit
 class PhotoSnippitCell: UITableViewCell {
     @IBOutlet var photo: UIImageView!
     @IBOutlet var date: UILabel!
-}
+    
+    var shareButton: (() -> Void)?
+    
+    @IBAction func shareButtonPressed() {
+        if let callback = shareButton {
+            callback()
+        }
+    }}

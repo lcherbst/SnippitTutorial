@@ -12,4 +12,12 @@ import UIKit
 class TextSnippitCell: UITableViewCell {
     @IBOutlet var label: UILabel!
     @IBOutlet weak var date: UILabel!
+    
+    var shareButton: (() -> Void)?
+    
+    @IBAction func shareButtonPressed() {
+        if let callback = shareButton {
+            callback()
+        }
+    }
 }
